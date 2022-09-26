@@ -37,7 +37,62 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   static final List<Widget> _pages = <Widget>[
-    Padding(
+    const _HomePage(),
+    const Icon(
+      Icons.directions,
+      size: 150,
+    ),
+    const Icon(
+      Icons.doorbell_outlined,
+      size: 150,
+    ),
+    const Icon(
+      Icons.account_circle,
+      size: 150,
+    )
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(child: _pages.elementAt(_selectedIndex)),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_filled),
+            label: 'Home',
+            backgroundColor: Colors.grey
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.directions),
+            label: 'Direction'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.doorbell_outlined),
+            label: 'Notification',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Account',
+          ),
+        ],
+        currentIndex: _selectedIndex, //New
+        onTap: _onItemTapped,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.black,
+        showUnselectedLabels: false,
+      ),
+    );
+  }
+
+
+}
+
+class _HomePage extends StatelessWidget{
+  const _HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
       padding: const EdgeInsets.all(33.65),
       child: Column(
         children: [
@@ -312,52 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-    ),
-    const Icon(
-      Icons.directions,
-      size: 150,
-    ),
-    const Icon(
-      Icons.doorbell_outlined,
-      size: 150,
-    ),
-    const Icon(
-      Icons.account_circle,
-      size: 150,
-    )
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(child: _pages.elementAt(_selectedIndex)),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: 'Home',
-            backgroundColor: Colors.grey
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.directions),
-            label: 'Direction'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.doorbell_outlined),
-            label: 'Notification',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
-          ),
-        ],
-        currentIndex: _selectedIndex, //New
-        onTap: _onItemTapped,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.black,
-        showUnselectedLabels: false,
-      ),
     );
   }
-
 
 }
